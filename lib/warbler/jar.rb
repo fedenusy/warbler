@@ -55,7 +55,7 @@ module Warbler
     DEFAULT_COMPILED_FILES_SLICE = 2500
 
     def run_jrubyc(config, compiled_ruby_files)
-      compiled_ruby_files.each_slice(2) do |files|
+      compiled_ruby_files.each_slice(100) do |files|
         files = "\"#{files.join('" "')}\""
         classpath = config.java_libs.map { |lib| "\"#{lib.gsub('"', '\\"')}\"" }.join(File::PATH_SEPARATOR)
         # Need to use the version of JRuby in the application to compile it
